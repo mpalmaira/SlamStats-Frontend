@@ -1,9 +1,10 @@
 .App {
   text-align: center;
-  background-color: #282c34;
+  background-color: #242525;
 }
-
-
+.text-light-gray {
+  color: rgba(255, 255, 255, 0.5);
+}
 .App-logo {
   height: 40vmin;
   pointer-events: none;
@@ -37,4 +38,11 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+.border-light1 {
+  padding: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  -webkit-background-clip: padding-box; /* for Safari */
+  background-clip: padding-box; /* Firefox 4+, Opera, Chrome */
 }

@@ -1,9 +1,13 @@
 import React from "react";
-import { Container, Row, Col } from "react-bootstrap";
+import { Container, Row, Col, Table } from "react-bootstrap";
 
 const Home = () => {
   const getTeamLogo = (teamId) => {
     return `https://cdn.nba.com/logos/nba/${teamId}/primary/L/logo.svg`;
+  };
+
+  const getPlayerHeadshot = (playerid) => {
+    return `https://cdn.nba.com/headshots/nba/latest/260x190/${playerid}.png`;
   };
 
   const exampleData = {
@@ -422,72 +426,201 @@ const Home = () => {
     homeTeamName,
     homeLosses,
     homeWins,
-    date
+    gameStatus,
+    gameDate,
+    homeGameLeader,
+    awayGameLeader
   ) => {
+    console.log(homeGameLeader.personId);
     return (
-      <div className="p-2 bg-dark rounded ">
-        <div className="p-2 text-muted">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="16"
-            height="16"
-            fill="currentColor"
-            class="bi bi-calendar4"
-            viewBox="0 0 16 16"
+      <Container className="border-light1 rounded m-2 bg-dark">
+        <Row>
+          <Col>
+            <Row>
+              <Col className="d-flex flex-column align-items-center text-light">
+                <img
+                  src={getTeamLogo(awayTeamId)}
+                  alt="away team logo"
+                  height={150}
+                  width={200}
+                />
+                <span>{awayTeamName}</span>
+                <span>
+                  {awayLosses} - {awayWins}
+                </span>
+              </Col>
+              {/* If gamestatus = 1 -> scehduled
+              If gamestats = 2 -> Live
+              
+              if period = 0 -> game not sturated yetr
+              
+              
+              */}
+              <Col className="d-flex flex-column align-items-center">
+                <h2
+                  className="m
+            y-4"
+                >
+                  {gameStatus}
+                </h2>
+                <span className="my-3">{gameDate}</span>
+              </Col>
+              <Col className="w-50 d-flex flex-column align-items-center text-light">
+                {" "}
+                <img
+                  src={getTeamLogo(homeTeamId)}
+                  alt="away team logo"
+                  height={150}
+                  width={200}
+                />
+                <span>{homeTeamName}</span>
+                <span>
+                  {homeWins} - {homeLosses}
+                </span>
+              </Col>
+            </Row>
+            <Row className="">
+              <Col
+                className="d-flex justify-content-center align-items-center text-center"
+                style={{ borderTop: "1px solid rgba(255, 255, 255, 0.1)" }}
+              >
+                <a>PREVIEW</a>
+              </Col>
+              <Col
+                className="d-flex justify-content-center"
+                style={{
+                  borderTop: "1px solid rgba(255, 255, 255, 0.1)",
+                  borderLeft: "1px solid rgba(255, 255, 255, 0.1)",
+                }}
+              >
+                <a>Stats</a>
+              </Col>
+            </Row>
+          </Col>
+          <Col
+            style={{
+              borderLeft: " 1px solid rgba(255, 255, 255, 0.1)",
+            }}
           >
-            <path d="M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5M2 2a1 1 0 0 0-1 1v1h14V3a1 1 0 0 0-1-1zm13 3H1v9a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1z" />
-          </svg>
-          <span>{date}</span>
-        </div>
-        <div>
-          <div>
-            <img
-              src={getTeamLogo(awayTeamId)}
-              alt="away team logo"
-              className="w-25"
-            />
-            <span>{awayTeamName}</span>
-            <small>
-              ({awayWins} - {awayLosses})
-            </small>
-          </div>
-          <div>
-            <img
-              src={getTeamLogo(homeTeamId)}
-              className="w-25"
-              alt="home team logo"
-            />
-            <span>{homeTeamName}</span>
-            <small className="text-small">
-              ({homeWins} - {homeLosses})
-            </small>
-          </div>
-        </div>
-      </div>
+            {homeGameLeader.personId === 0 && awayGameLeader.personId === 0 ? (
+              <div>
+                <h3>Season Leaders</h3>
+              </div>
+            ) : (
+              <div>
+                <h3>Game Leaders</h3>
+                <Table className="table-dark" borderless>
+                  <thead className="text-center">
+                    <tr>
+                      <th colSpan={2} scope="col"></th>
+                      <th>PNTS</th>
+                      <th>REB</th>
+                      <th>AST</th>
+                    </tr>
+                  </thead>
+                  <tbody className="text-center">
+                    <tr
+                      style={{
+                        borderTop: " 1px solid rgba(255, 255, 255, 0.1)",
+                      }}
+                    >
+                      <td></td>
+                      <td className="d-flex align-items-center">
+                        <img
+                          className="rounded-circle"
+                          height={50}
+                          width={75}
+                          src={getPlayerHeadshot(awayGameLeader.personId)}
+                          alt="home player id"
+                        />
+                        <div className="text-light-gray">
+                          <span>{awayGameLeader.name}</span>
+                          <div>
+                            <span>{awayGameLeader.teamTricode} | </span>
+
+                            <span>#{awayGameLeader.jerseyNum} | </span>
+                            <span>{awayGameLeader.position} </span>
+                          </div>
+                        </div>
+                      </td>
+                      <td>
+                        <span>{awayGameLeader.points}</span>
+                      </td>
+                      <td>
+                        <span>{awayGameLeader.rebounds}</span>
+                      </td>
+                      <td>
+                        <span>{awayGameLeader.assists}</span>
+                      </td>
+                    </tr>
+                    <tr
+                      style={{
+                        borderTop: " 1px solid rgba(255, 255, 255, 0.1)",
+                      }}
+                    >
+                      <td></td>
+                      <td className="d-flex align-items-center">
+                        <img
+                          className="rounded-circle"
+                          height={50}
+                          width={75}
+                          src={getPlayerHeadshot(homeGameLeader.personId)}
+                          alt="home player id"
+                        />
+                        <div className="text-light-gray">
+                          <span>#{homeGameLeader.name}</span>
+                          <div>
+                            {" "}
+                            <span>{homeGameLeader.teamTricode} | </span>
+                            <span>{homeGameLeader.jerseyNum} | </span>
+                            <span>{homeGameLeader.position}</span>
+                          </div>
+                        </div>
+                      </td>
+                      <td>
+                        <span>{homeGameLeader.points}</span>
+                      </td>
+                      <td>
+                        <span>{homeGameLeader.rebounds}</span>
+                      </td>
+                      <td>
+                        <span>{homeGameLeader.assists}</span>
+                      </td>
+                    </tr>
+                  </tbody>
+                </Table>
+              </div>
+            )}
+          </Col>
+        </Row>
+      </Container>
     );
   };
 
   return (
     <Container className="p-4 text-start text-white">
-      <Row>
-        {exampleData["scoreboard"]["games"].map((game) => {
-          return (
-            <Col>
-              {generateBox(
-                game.awayTeam.teamId,
-                game.awayTeam.teamName,
-                game.awayTeam.wins,
-                game.awayTeam.losses,
-                game.homeTeam.teamId,
-                game.homeTeam.teamName,
-                game.homeTeam.wins,
-                game.homeTeam.losses,
-                game.gameEt
-              )}
-            </Col>
-          );
-        })}
-      </Row>
+      {exampleData["scoreboard"]["games"].map((game) => {
+        {
+        }
+        return (
+          <>
+            {generateBox(
+              game.awayTeam.teamId,
+              game.awayTeam.teamName,
+              game.awayTeam.wins,
+              game.awayTeam.losses,
+              game.homeTeam.teamId,
+              game.homeTeam.teamName,
+              game.homeTeam.wins,
+              game.homeTeam.losses,
+              game.gameStatusText,
+              game.gameEt,
+              game.gameLeaders.homeLeaders,
+              game.gameLeaders.awayLeaders
+            )}
+          </>
+        );
+      })}
     </Container>
   );
 };
