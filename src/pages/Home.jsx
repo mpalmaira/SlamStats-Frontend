@@ -413,38 +413,82 @@ const Home = () => {
     },
   };
 
+  const generateBox = (
+    awayTeamId,
+    awayTeamName,
+    awayLosses,
+    awayWins,
+    homeTeamId,
+    homeTeamName,
+    homeLosses,
+    homeWins,
+    date
+  ) => {
+    return (
+      <div className="p-2 bg-dark rounded ">
+        <div className="p-2 text-muted">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="16"
+            height="16"
+            fill="currentColor"
+            class="bi bi-calendar4"
+            viewBox="0 0 16 16"
+          >
+            <path d="M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5M2 2a1 1 0 0 0-1 1v1h14V3a1 1 0 0 0-1-1zm13 3H1v9a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1z" />
+          </svg>
+          <span>{date}</span>
+        </div>
+        <div>
+          <div>
+            <img
+              src={getTeamLogo(awayTeamId)}
+              alt="away team logo"
+              className="w-25"
+            />
+            <span>{awayTeamName}</span>
+            <small>
+              ({awayWins} - {awayLosses})
+            </small>
+          </div>
+          <div>
+            <img
+              src={getTeamLogo(homeTeamId)}
+              className="w-25"
+              alt="home team logo"
+            />
+            <span>{homeTeamName}</span>
+            <small className="text-small">
+              ({homeWins} - {homeLosses})
+            </small>
+          </div>
+        </div>
+      </div>
+    );
+  };
+
   return (
-    <>
-      <Container className="p-4 text-start text-white">
-        {console.log(exampleData["scoreboard"]["games"])}
+    <Container className="p-4 text-start text-white">
+      <Row>
         {exampleData["scoreboard"]["games"].map((game) => {
           return (
-            <Container>
-              <Row>
-                <Col className="text-white">
-                  <div className="d-flex flex-column">
-                    <img src={getTeamLogo(game.awayTeam.teamId)} />
-                    <span>{game.awayTeam.teamName}</span>
-                    <span>
-                      {game.awayTeam.wins} - {game.awayTeam.losses}
-                    </span>
-                  </div>
-                </Col>
-                <Col className="text-white">
-                  <div className="d-flex flex-column">
-                    <img src={getTeamLogo(game.homeTeam.teamId)} />
-                    <span>{game.homeTeam.teamName}</span>
-                    <span>
-                      {game.homeTeam.wins} - {game.homeTeam.losses}
-                    </span>
-                  </div>
-                </Col>
-              </Row>
-            </Container>
+            <Col>
+              {generateBox(
+                game.awayTeam.teamId,
+                game.awayTeam.teamName,
+                game.awayTeam.wins,
+                game.awayTeam.losses,
+                game.homeTeam.teamId,
+                game.homeTeam.teamName,
+                game.homeTeam.wins,
+                game.homeTeam.losses,
+                game.gameEt
+              )}
+            </Col>
           );
         })}
-      </Container>
-    </>
+      </Row>
+    </Container>
   );
 };
 export default Home;
