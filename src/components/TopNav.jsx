@@ -5,7 +5,7 @@ const TopNav = () => {
   return (
     <Navbar data-bs-theme="dark" className="mb-5">
       <Container>
-        <Navbar.Brand href="#home">SlamStats</Navbar.Brand>
+        <Navbar.Brand href="#home">SLAMSTATS</Navbar.Brand>
         <Nav className="ms-auto">
           <Nav.Link href="#home" className="text-white">
             Home

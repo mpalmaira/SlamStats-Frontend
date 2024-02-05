@@ -10,28 +10,36 @@ const Home = () => {
     return `https://cdn.nba.com/headshots/nba/latest/260x190/${playerid}.png`;
   };
 
+  const formatDate = (dateString) => {
+    const date = new Date(dateString);
+
+    const options = { weekday: "short", month: "numeric", day: "numeric" };
+    const formattedDate = date.toLocaleDateString("en-US", options);
+    return formattedDate;
+  };
+
   const exampleData = {
     meta: {
       version: 1,
       request:
         "https://nba-prod-us-east-1-mediaops-stats.s3.amazonaws.com/NBA/liveData/scoreboard/todaysScoreboard_00.json",
-      time: "2024-01-28 02:16:47.1647",
+      time: "2024-02-05 12:55:40.5540",
       code: 200,
     },
     scoreboard: {
-      gameDate: "2024-01-28",
+      gameDate: "2024-02-05",
       leagueId: "00",
       leagueName: "National Basketball Association",
       games: [
         {
-          gameId: "0022300654",
-          gameCode: "20240128/OKCDET",
-          gameStatus: 2,
-          gameStatusText: "Q1 8:33",
-          period: 1,
-          gameClock: "PT08M33.00S",
-          gameTimeUTC: "2024-01-28T19:00:00Z",
-          gameEt: "2024-01-28T14:00:00-05:00",
+          gameId: "0022300713",
+          gameCode: "20240205/LALCHA",
+          gameStatus: 1,
+          gameStatusText: "7:00 pm ET",
+          period: 0,
+          gameClock: "",
+          gameTimeUTC: "2024-02-06T00:00:00Z",
+          gameEt: "2024-02-05T19:00:00Z",
           regulationPeriods: 4,
           ifNecessary: false,
           seriesGameNumber: "",
@@ -40,108 +48,30 @@ const Home = () => {
           poRoundDesc: "",
           gameSubtype: "",
           homeTeam: {
-            teamId: 1610612765,
-            teamName: "Pistons",
-            teamCity: "Detroit",
-            teamTricode: "DET",
-            wins: 5,
-            losses: 40,
-            score: 5,
+            teamId: 1610612766,
+            teamName: "Hornets",
+            teamCity: "Charlotte",
+            teamTricode: "CHA",
+            wins: 10,
+            losses: 38,
+            score: 0,
             seed: null,
-            inBonus: "0",
-            timeoutsRemaining: 6,
+            inBonus: null,
+            timeoutsRemaining: 0,
             periods: [
-              { period: 1, periodType: "REGULAR", score: 5 },
+              { period: 1, periodType: "REGULAR", score: 0 },
               { period: 2, periodType: "REGULAR", score: 0 },
               { period: 3, periodType: "REGULAR", score: 0 },
               { period: 4, periodType: "REGULAR", score: 0 },
             ],
           },
           awayTeam: {
-            teamId: 1610612760,
-            teamName: "Thunder",
-            teamCity: "Oklahoma City",
-            teamTricode: "OKC",
-            wins: 32,
-            losses: 13,
-            score: 15,
-            seed: null,
-            inBonus: "0",
-            timeoutsRemaining: 7,
-            periods: [
-              { period: 1, periodType: "REGULAR", score: 15 },
-              { period: 2, periodType: "REGULAR", score: 0 },
-              { period: 3, periodType: "REGULAR", score: 0 },
-              { period: 4, periodType: "REGULAR", score: 0 },
-            ],
-          },
-          gameLeaders: {
-            homeLeaders: {
-              personId: 1631105,
-              name: "Jalen Duren",
-              jerseyNum: "0",
-              position: "C",
-              teamTricode: "DET",
-              playerSlug: "jalen-duren",
-              points: 2,
-              rebounds: 3,
-              assists: 0,
-            },
-            awayLeaders: {
-              personId: 1631096,
-              name: "Chet Holmgren",
-              jerseyNum: "7",
-              position: "CF",
-              teamTricode: "OKC",
-              playerSlug: "chet-holmgren",
-              points: 7,
-              rebounds: 4,
-              assists: 0,
-            },
-          },
-          pbOdds: { team: null, odds: 0.0, suspended: 0 },
-        },
-        {
-          gameId: "0022300652",
-          gameCode: "20240128/MEMIND",
-          gameStatus: 1,
-          gameStatusText: "3:30 pm ET",
-          period: 0,
-          gameClock: "",
-          gameTimeUTC: "2024-01-28T20:30:00Z",
-          gameEt: "2024-01-28T15:30:00Z",
-          regulationPeriods: 4,
-          ifNecessary: false,
-          seriesGameNumber: "",
-          seriesText: "",
-          seriesConference: "",
-          poRoundDesc: "",
-          gameSubtype: "",
-          homeTeam: {
-            teamId: 1610612754,
-            teamName: "Pacers",
-            teamCity: "Indiana",
-            teamTricode: "IND",
+            teamId: 1610612747,
+            teamName: "Lakers",
+            teamCity: "Los Angeles",
+            teamTricode: "LAL",
             wins: 26,
-            losses: 20,
-            score: 0,
-            seed: null,
-            inBonus: null,
-            timeoutsRemaining: 0,
-            periods: [
-              { period: 1, periodType: "REGULAR", score: 0 },
-              { period: 2, periodType: "REGULAR", score: 0 },
-              { period: 3, periodType: "REGULAR", score: 0 },
-              { period: 4, periodType: "REGULAR", score: 0 },
-            ],
-          },
-          awayTeam: {
-            teamId: 1610612763,
-            teamName: "Grizzlies",
-            teamCity: "Memphis",
-            teamTricode: "MEM",
-            wins: 18,
-            losses: 27,
+            losses: 25,
             score: 0,
             seed: null,
             inBonus: null,
@@ -159,7 +89,7 @@ const Home = () => {
               name: "",
               jerseyNum: "",
               position: "",
-              teamTricode: "IND",
+              teamTricode: "CHA",
               playerSlug: null,
               points: 0,
               rebounds: 0,
@@ -170,7 +100,7 @@ const Home = () => {
               name: "",
               jerseyNum: "",
               position: "",
-              teamTricode: "MEM",
+              teamTricode: "LAL",
               playerSlug: null,
               points: 0,
               rebounds: 0,
@@ -180,14 +110,170 @@ const Home = () => {
           pbOdds: { team: null, odds: 0.0, suspended: 0 },
         },
         {
-          gameId: "0022300653",
-          gameCode: "20240128/TORATL",
+          gameId: "0022300714",
+          gameCode: "20240205/SACCLE",
           gameStatus: 1,
-          gameStatusText: "6:00 pm ET",
+          gameStatusText: "7:00 pm ET",
           period: 0,
           gameClock: "",
-          gameTimeUTC: "2024-01-28T23:00:00Z",
-          gameEt: "2024-01-28T18:00:00Z",
+          gameTimeUTC: "2024-02-06T00:00:00Z",
+          gameEt: "2024-02-05T19:00:00Z",
+          regulationPeriods: 4,
+          ifNecessary: false,
+          seriesGameNumber: "",
+          seriesText: "",
+          seriesConference: "",
+          poRoundDesc: "",
+          gameSubtype: "",
+          homeTeam: {
+            teamId: 1610612739,
+            teamName: "Cavaliers",
+            teamCity: "Cleveland",
+            teamTricode: "CLE",
+            wins: 31,
+            losses: 16,
+            score: 0,
+            seed: null,
+            inBonus: null,
+            timeoutsRemaining: 0,
+            periods: [
+              { period: 1, periodType: "REGULAR", score: 0 },
+              { period: 2, periodType: "REGULAR", score: 0 },
+              { period: 3, periodType: "REGULAR", score: 0 },
+              { period: 4, periodType: "REGULAR", score: 0 },
+            ],
+          },
+          awayTeam: {
+            teamId: 1610612758,
+            teamName: "Kings",
+            teamCity: "Sacramento",
+            teamTricode: "SAC",
+            wins: 29,
+            losses: 19,
+            score: 0,
+            seed: null,
+            inBonus: null,
+            timeoutsRemaining: 0,
+            periods: [
+              { period: 1, periodType: "REGULAR", score: 0 },
+              { period: 2, periodType: "REGULAR", score: 0 },
+              { period: 3, periodType: "REGULAR", score: 0 },
+              { period: 4, periodType: "REGULAR", score: 0 },
+            ],
+          },
+          gameLeaders: {
+            homeLeaders: {
+              personId: 0,
+              name: "",
+              jerseyNum: "",
+              position: "",
+              teamTricode: "CLE",
+              playerSlug: null,
+              points: 0,
+              rebounds: 0,
+              assists: 0,
+            },
+            awayLeaders: {
+              personId: 0,
+              name: "",
+              jerseyNum: "",
+              position: "",
+              teamTricode: "SAC",
+              playerSlug: null,
+              points: 0,
+              rebounds: 0,
+              assists: 0,
+            },
+          },
+          pbOdds: { team: null, odds: 0.0, suspended: 0 },
+        },
+        {
+          gameId: "0022300715",
+          gameCode: "20240205/DALPHI",
+          gameStatus: 1,
+          gameStatusText: "7:00 pm ET",
+          period: 0,
+          gameClock: "",
+          gameTimeUTC: "2024-02-06T00:00:00Z",
+          gameEt: "2024-02-05T19:00:00Z",
+          regulationPeriods: 4,
+          ifNecessary: false,
+          seriesGameNumber: "",
+          seriesText: "",
+          seriesConference: "",
+          poRoundDesc: "",
+          gameSubtype: "",
+          homeTeam: {
+            teamId: 1610612755,
+            teamName: "76ers",
+            teamCity: "Philadelphia",
+            teamTricode: "PHI",
+            wins: 30,
+            losses: 18,
+            score: 0,
+            seed: null,
+            inBonus: null,
+            timeoutsRemaining: 0,
+            periods: [
+              { period: 1, periodType: "REGULAR", score: 0 },
+              { period: 2, periodType: "REGULAR", score: 0 },
+              { period: 3, periodType: "REGULAR", score: 0 },
+              { period: 4, periodType: "REGULAR", score: 0 },
+            ],
+          },
+          awayTeam: {
+            teamId: 1610612742,
+            teamName: "Mavericks",
+            teamCity: "Dallas",
+            teamTricode: "DAL",
+            wins: 26,
+            losses: 23,
+            score: 0,
+            seed: null,
+            inBonus: null,
+            timeoutsRemaining: 0,
+            periods: [
+              { period: 1, periodType: "REGULAR", score: 0 },
+              { period: 2, periodType: "REGULAR", score: 0 },
+              { period: 3, periodType: "REGULAR", score: 0 },
+              { period: 4, periodType: "REGULAR", score: 0 },
+            ],
+          },
+          gameLeaders: {
+            homeLeaders: {
+              personId: 0,
+              name: "",
+              jerseyNum: "",
+              position: "",
+              teamTricode: "PHI",
+              playerSlug: null,
+              points: 0,
+              rebounds: 0,
+              assists: 0,
+            },
+            awayLeaders: {
+              personId: 0,
+              name: "",
+              jerseyNum: "",
+              position: "",
+              teamTricode: "DAL",
+              playerSlug: null,
+              points: 0,
+              rebounds: 0,
+              assists: 0,
+            },
+          },
+          pbOdds: { team: null, odds: 0.0, suspended: 0 },
+        },
+        {
+          gameId: "0022300716",
+          gameCode: "20240205/LACATL",
+          gameStatus: 1,
+          gameStatusText: "7:30 pm ET",
+          period: 0,
+          gameClock: "",
+          gameTimeUTC: "2024-02-06T00:30:00Z",
+          gameEt: "2024-02-05T19:30:00Z",
           regulationPeriods: 4,
           ifNecessary: false,
           seriesGameNumber: "",
@@ -200,7 +286,7 @@ const Home = () => {
             teamName: "Hawks",
             teamCity: "Atlanta",
             teamTricode: "ATL",
-            wins: 18,
+            wins: 22,
             losses: 27,
             score: 0,
             seed: null,
@@ -214,12 +300,12 @@ const Home = () => {
             ],
           },
           awayTeam: {
-            teamId: 1610612761,
-            teamName: "Raptors",
-            teamCity: "Toronto",
-            teamTricode: "TOR",
-            wins: 16,
-            losses: 29,
+            teamId: 1610612746,
+            teamName: "Clippers",
+            teamCity: "LA",
+            teamTricode: "LAC",
+            wins: 33,
+            losses: 15,
             score: 0,
             seed: null,
             inBonus: null,
@@ -248,7 +334,7 @@ const Home = () => {
               name: "",
               jerseyNum: "",
               position: "",
-              teamTricode: "TOR",
+              teamTricode: "LAC",
               playerSlug: null,
               points: 0,
               rebounds: 0,
@@ -258,14 +344,14 @@ const Home = () => {
           pbOdds: { team: null, odds: 0.0, suspended: 0 },
         },
         {
-          gameId: "0022300655",
-          gameCode: "20240128/PHXORL",
+          gameId: "0022300717",
+          gameCode: "20240205/GSWBKN",
           gameStatus: 1,
-          gameStatusText: "6:00 pm ET",
+          gameStatusText: "7:30 pm ET",
           period: 0,
           gameClock: "",
-          gameTimeUTC: "2024-01-28T23:00:00Z",
-          gameEt: "2024-01-28T18:00:00Z",
+          gameTimeUTC: "2024-02-06T00:30:00Z",
+          gameEt: "2024-02-05T19:30:00Z",
           regulationPeriods: 4,
           ifNecessary: false,
           seriesGameNumber: "",
@@ -274,12 +360,12 @@ const Home = () => {
           poRoundDesc: "",
           gameSubtype: "",
           homeTeam: {
-            teamId: 1610612753,
-            teamName: "Magic",
-            teamCity: "Orlando",
-            teamTricode: "ORL",
-            wins: 23,
-            losses: 22,
+            teamId: 1610612751,
+            teamName: "Nets",
+            teamCity: "Brooklyn",
+            teamTricode: "BKN",
+            wins: 20,
+            losses: 28,
             score: 0,
             seed: null,
             inBonus: null,
@@ -292,88 +378,10 @@ const Home = () => {
             ],
           },
           awayTeam: {
-            teamId: 1610612756,
-            teamName: "Suns",
-            teamCity: "Phoenix",
-            teamTricode: "PHX",
-            wins: 26,
-            losses: 19,
-            score: 0,
-            seed: null,
-            inBonus: null,
-            timeoutsRemaining: 0,
-            periods: [
-              { period: 1, periodType: "REGULAR", score: 0 },
-              { period: 2, periodType: "REGULAR", score: 0 },
-              { period: 3, periodType: "REGULAR", score: 0 },
-              { period: 4, periodType: "REGULAR", score: 0 },
-            ],
-          },
-          gameLeaders: {
-            homeLeaders: {
-              personId: 0,
-              name: "",
-              jerseyNum: "",
-              position: "",
-              teamTricode: "ORL",
-              playerSlug: null,
-              points: 0,
-              rebounds: 0,
-              assists: 0,
-            },
-            awayLeaders: {
-              personId: 0,
-              name: "",
-              jerseyNum: "",
-              position: "",
-              teamTricode: "PHX",
-              playerSlug: null,
-              points: 0,
-              rebounds: 0,
-              assists: 0,
-            },
-          },
-          pbOdds: { team: null, odds: 0.0, suspended: 0 },
-        },
-        {
-          gameId: "0022300656",
-          gameCode: "20240128/CHIPOR",
-          gameStatus: 1,
-          gameStatusText: "9:00 pm ET",
-          period: 0,
-          gameClock: "",
-          gameTimeUTC: "2024-01-29T02:00:00Z",
-          gameEt: "2024-01-28T21:00:00Z",
-          regulationPeriods: 4,
-          ifNecessary: false,
-          seriesGameNumber: "",
-          seriesText: "",
-          seriesConference: "",
-          poRoundDesc: "",
-          gameSubtype: "",
-          homeTeam: {
-            teamId: 1610612757,
-            teamName: "Trail Blazers",
-            teamCity: "Portland",
-            teamTricode: "POR",
-            wins: 13,
-            losses: 32,
-            score: 0,
-            seed: null,
-            inBonus: null,
-            timeoutsRemaining: 0,
-            periods: [
-              { period: 1, periodType: "REGULAR", score: 0 },
-              { period: 2, periodType: "REGULAR", score: 0 },
-              { period: 3, periodType: "REGULAR", score: 0 },
-              { period: 4, periodType: "REGULAR", score: 0 },
-            ],
-          },
-          awayTeam: {
-            teamId: 1610612741,
-            teamName: "Bulls",
-            teamCity: "Chicago",
-            teamTricode: "CHI",
+            teamId: 1610612744,
+            teamName: "Warriors",
+            teamCity: "Golden State",
+            teamTricode: "GSW",
             wins: 21,
             losses: 25,
             score: 0,
@@ -393,7 +401,7 @@ const Home = () => {
               name: "",
               jerseyNum: "",
               position: "",
-              teamTricode: "POR",
+              teamTricode: "BKN",
               playerSlug: null,
               points: 0,
               rebounds: 0,
@@ -404,7 +412,85 @@ const Home = () => {
               name: "",
               jerseyNum: "",
               position: "",
-              teamTricode: "CHI",
+              teamTricode: "GSW",
+              playerSlug: null,
+              points: 0,
+              rebounds: 0,
+              assists: 0,
+            },
+          },
+          pbOdds: { team: null, odds: 0.0, suspended: 0 },
+        },
+        {
+          gameId: "0022300718",
+          gameCode: "20240205/TORNOP",
+          gameStatus: 1,
+          gameStatusText: "8:00 pm ET",
+          period: 0,
+          gameClock: "",
+          gameTimeUTC: "2024-02-06T01:00:00Z",
+          gameEt: "2024-02-05T20:00:00Z",
+          regulationPeriods: 4,
+          ifNecessary: false,
+          seriesGameNumber: "",
+          seriesText: "",
+          seriesConference: "",
+          poRoundDesc: "",
+          gameSubtype: "",
+          homeTeam: {
+            teamId: 1610612740,
+            teamName: "Pelicans",
+            teamCity: "New Orleans",
+            teamTricode: "NOP",
+            wins: 28,
+            losses: 21,
+            score: 0,
+            seed: null,
+            inBonus: null,
+            timeoutsRemaining: 0,
+            periods: [
+              { period: 1, periodType: "REGULAR", score: 0 },
+              { period: 2, periodType: "REGULAR", score: 0 },
+              { period: 3, periodType: "REGULAR", score: 0 },
+              { period: 4, periodType: "REGULAR", score: 0 },
+            ],
+          },
+          awayTeam: {
+            teamId: 1610612761,
+            teamName: "Raptors",
+            teamCity: "Toronto",
+            teamTricode: "TOR",
+            wins: 17,
+            losses: 32,
+            score: 0,
+            seed: null,
+            inBonus: null,
+            timeoutsRemaining: 0,
+            periods: [
+              { period: 1, periodType: "REGULAR", score: 0 },
+              { period: 2, periodType: "REGULAR", score: 0 },
+              { period: 3, periodType: "REGULAR", score: 0 },
+              { period: 4, periodType: "REGULAR", score: 0 },
+            ],
+          },
+          gameLeaders: {
+            homeLeaders: {
+              personId: 0,
+              name: "",
+              jerseyNum: "",
+              position: "",
+              teamTricode: "NOP",
+              playerSlug: null,
+              points: 0,
+              rebounds: 0,
+              assists: 0,
+            },
+            awayLeaders: {
+              personId: 0,
+              name: "",
+              jerseyNum: "",
+              position: "",
+              teamTricode: "TOR",
               playerSlug: null,
               points: 0,
               rebounds: 0,
@@ -422,11 +508,14 @@ const Home = () => {
     awayTeamName,
     awayLosses,
     awayWins,
+    awayScore,
     homeTeamId,
     homeTeamName,
     homeLosses,
     homeWins,
+    homeScore,
     gameStatus,
+    gameStatusText,
     gameDate,
     homeGameLeader,
     awayGameLeader
@@ -435,65 +524,76 @@ const Home = () => {
     return (
       <Container className="border-light1 rounded m-2 bg-dark">
         <Row>
-          <Col>
-            <Row>
+          <Col sm={5}>
+            <Row className="mb-2">
               <Col className="d-flex flex-column align-items-center text-light">
                 <img
                   src={getTeamLogo(awayTeamId)}
                   alt="away team logo"
-                  height={150}
-                  width={200}
+                  height={100}
+                  width={100}
                 />
-                <span>{awayTeamName}</span>
-                <span>
-                  {awayLosses} - {awayWins}
-                </span>
-              </Col>
-              {/* If gamestatus = 1 -> scehduled
-              If gamestats = 2 -> Live
+                {/* If gamestatus = 1 -> scehduled
+              If gamestatus = 2 -> Live
               
-              if period = 0 -> game not sturated yetr
+              if period = 0 -> game not started yet
               
               
               */}
-              <Col className="d-flex flex-column align-items-center">
-                <h2
-                  className="m
-            y-4"
-                >
-                  {gameStatus}
-                </h2>
-                <span className="my-3">{gameDate}</span>
+                {gameStatus === 2 ? (
+                  <>
+                    <h3>{awayScore}</h3>
+                  </>
+                ) : (
+                  <>
+                    <span>{awayTeamName}</span>
+                    <span>
+                      {awayLosses} - {awayWins}
+                    </span>
+                  </>
+                )}
+              </Col>
+
+              <Col className="d-flex flex-column align-items-center py-4">
+                {gameStatus === 2 ? (
+                  <>
+                    <h2 className="my-2">{gameStatusText}</h2>
+                  </>
+                ) : (
+                  <>
+                    <h2>{gameStatusText}</h2>
+                    <span className="my-3">{formatDate(gameDate)}</span>
+                  </>
+                )}
               </Col>
               <Col className="w-50 d-flex flex-column align-items-center text-light">
                 {" "}
                 <img
                   src={getTeamLogo(homeTeamId)}
                   alt="away team logo"
-                  height={150}
-                  width={200}
+                  height={100}
+                  width={100}
                 />
-                <span>{homeTeamName}</span>
-                <span>
-                  {homeWins} - {homeLosses}
-                </span>
+                {gameStatus === 2 ? (
+                  <>
+                    <h3>{homeScore}</h3>
+                  </>
+                ) : (
+                  <>
+                    <span>{homeTeamName}</span>
+                    <span>
+                      {homeLosses} - {homeWins}
+                    </span>
+                  </>
+                )}
               </Col>
             </Row>
-            <Row className="">
+            <Row>
               <Col
                 className="d-flex justify-content-center align-items-center text-center"
                 style={{ borderTop: "1px solid rgba(255, 255, 255, 0.1)" }}
               >
-                <a>PREVIEW</a>
-              </Col>
-              <Col
-                className="d-flex justify-content-center"
-                style={{
-                  borderTop: "1px solid rgba(255, 255, 255, 0.1)",
-                  borderLeft: "1px solid rgba(255, 255, 255, 0.1)",
-                }}
-              >
-                <a>Stats</a>
+                <span className="mt-2 fw-bold">PREVIEW</span>
               </Col>
             </Row>
           </Col>
@@ -501,15 +601,16 @@ const Home = () => {
             style={{
               borderLeft: " 1px solid rgba(255, 255, 255, 0.1)",
             }}
+            className="text-start"
           >
             {homeGameLeader.personId === 0 && awayGameLeader.personId === 0 ? (
               <div>
-                <h3>Season Leaders</h3>
+                <span className="fw-bold mx-5">SEASON LEADERS</span>
               </div>
             ) : (
               <div>
-                <h3>Game Leaders</h3>
-                <Table className="table-dark" borderless>
+                <span className="fw-bold mx-5">GAME LEADERS</span>
+                <Table className="table-dark mb-0 pb-0" borderless>
                   <thead className="text-center">
                     <tr>
                       <th colSpan={2} scope="col"></th>
@@ -518,14 +619,14 @@ const Home = () => {
                       <th>AST</th>
                     </tr>
                   </thead>
-                  <tbody className="text-center">
+                  <tbody className="text-center text-small">
                     <tr
                       style={{
                         borderTop: " 1px solid rgba(255, 255, 255, 0.1)",
                       }}
                     >
                       <td></td>
-                      <td className="d-flex align-items-center">
+                      <td className="d-flex align-items-center text-start">
                         <img
                           className="rounded-circle"
                           height={50}
@@ -533,12 +634,18 @@ const Home = () => {
                           src={getPlayerHeadshot(awayGameLeader.personId)}
                           alt="home player id"
                         />
-                        <div className="text-light-gray">
-                          <span>{awayGameLeader.name}</span>
+                        <div>
+                          <span>
+                            <small>{awayGameLeader.name}</small>
+                          </span>
                           <div>
-                            <span>{awayGameLeader.teamTricode} | </span>
+                            <span>
+                              <small>{awayGameLeader.teamTricode} |</small>{" "}
+                            </span>
 
-                            <span>#{awayGameLeader.jerseyNum} | </span>
+                            <span>
+                              <small>#{awayGameLeader.jerseyNum} |</small>{" "}
+                            </span>
                             <span>{awayGameLeader.position} </span>
                           </div>
                         </div>
@@ -559,7 +666,7 @@ const Home = () => {
                       }}
                     >
                       <td></td>
-                      <td className="d-flex align-items-center">
+                      <td className="d-flex align-items-center text-start">
                         <img
                           className="rounded-circle"
                           height={50}
@@ -567,13 +674,21 @@ const Home = () => {
                           src={getPlayerHeadshot(homeGameLeader.personId)}
                           alt="home player id"
                         />
-                        <div className="text-light-gray">
-                          <span>#{homeGameLeader.name}</span>
+                        <div>
+                          <span>
+                            <small>{homeGameLeader.name}</small>
+                          </span>
                           <div>
                             {" "}
-                            <span>{homeGameLeader.teamTricode} | </span>
-                            <span>{homeGameLeader.jerseyNum} | </span>
-                            <span>{homeGameLeader.position}</span>
+                            <span>
+                              <small>{homeGameLeader.teamTricode} | </small>
+                            </span>
+                            <span>
+                              <small>#{homeGameLeader.jerseyNum} | </small>
+                            </span>
+                            <span>
+                              <small>{homeGameLeader.position}</small>
+                            </span>
                           </div>
                         </div>
                       </td>
@@ -592,6 +707,9 @@ const Home = () => {
               </div>
             )}
           </Col>
+          <Col
+            style={{ borderLeft: "1px solid rgba(255, 255, 255, 0.1)" }}
+          ></Col>
         </Row>
       </Container>
     );
@@ -599,9 +717,8 @@ const Home = () => {
 
   return (
     <Container className="p-4 text-start text-white">
+      <h3 className="p-2">NBA</h3>
       {exampleData["scoreboard"]["games"].map((game) => {
-        {
-        }
         return (
           <>
             {generateBox(
@@ -609,10 +726,13 @@ const Home = () => {
               game.awayTeam.teamName,
               game.awayTeam.wins,
               game.awayTeam.losses,
+              game.awayTeam.score,
               game.homeTeam.teamId,
               game.homeTeam.teamName,
               game.homeTeam.wins,
               game.homeTeam.losses,
+              game.homeTeam.score,
+              game.gameStatus,
               game.gameStatusText,
               game.gameEt,
               game.gameLeaders.homeLeaders,
